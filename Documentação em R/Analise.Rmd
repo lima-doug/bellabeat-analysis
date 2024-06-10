@@ -410,3 +410,7 @@ ggplot(data=avg_intensity_cal, aes(x=avg_intensity, y=avg_cal))+
   labs(title = "Gastos de Caloria pela Intensidade", y="Calorias", x="Intensidade")
 ```
 O gráfico veio para evidênciar o que foi falado anteriormente. O gasto de caloria apresenta uma relação positiva com a intensidade, ou seja, quanto mais intensidade maior será o gasto calórico.
+
+## Considerações
+
+
