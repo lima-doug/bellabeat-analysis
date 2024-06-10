@@ -2,23 +2,33 @@
 Autor: Douglas Lima
 
 1. [Introdução](#introdução)
+2. [Cenário](#cenário)
+3. [Personagens e Produtos](#personagens-e-produtos)
+4. [Tarefas de Negócio](#tarefa-de-negócios)
+5. [Dados](#dados)
+6. [Processamento e Exploração](#processamento-e-exploração)
+7. [Compartilhamento e percepções](#compartilhamento-e-percepções)
+8. [Conclusões](#conclusões)
 
-## Introdução
+# Introdução
 Este estudo de caso apresenta uma análise detalhada da Bellabeat, uma fabricante de produtos de saúde de alta tecnologia voltados para mulheres. Sob a liderança visionária de Urška Sršen, co-fundadora e CEO, a Bellabeat busca expandir sua presença no mercado global de dispositivos inteligentes. Como parte do curso de Analista de Dados da Google, este estudo se concentra na análise dos dados de condicionamento físico dos dispositivos inteligentes da Bellabeat para identificar padrões de uso e comportamento dos consumidores. As descobertas desta análise fornecerão insights valiosos para orientar as estratégias de marketing da empresa, promovendo seu crescimento e sucesso contínuos no mercado altamente competitivo de tecnologia wearable.
 
-## Cenário
+# Cenário
 
 Bellabeat é uma fabricante de produtos de saúde de alta tecnologia voltados para mulheres. Apesar de ser uma empresa pequena, é bem-sucedida e possui potencial para expandir sua participação no mercado global de dispositivos inteligentes.
 
 Urška Sršen, co-fundadora e CEO da Bellabeat, reconhece que a análise de dados de condicionamento físico proveniente de dispositivos inteligentes pode desbloquear novas oportunidades de crescimento para a empresa. Como analista de dados júnior na equipe de marketing, fui encarregado de analisar os dados desses dispositivos para entender melhor como os consumidores os utilizam. Os insights obtidos orientarão a estratégia de marketing da empresa, que será apresentada à equipe executiva da Bellabeat juntamente com recomendações estratégicas.
 
-## Personagens e Produtos
+# Personagens e Produtos
 
 **Personagens**
 
 - **Urška Sršen:** Cofundadora e CEO da Bellabeat
 - **Sando Mur:** Matemático e cofundador da Bellabeat; membro-chave da equipe executiva da Bellabeat
+<<<<<<< HEAD
+=======
 
+>>>>>>> 231607c6648b93262eeb3d0397f168c16f532f88
 - **Equipe de análise de marketing da Bellabeat:** Uma equipe de analistas de dados responsável por coletar, analisar e relatar dados que ajudam a orientar a estratégia de marketing da Bellabeat. Você se juntou a esta equipe há seis meses e tem estado ocupado aprendendo sobre a missão e os objetivos de negócios da Bellabeat – e como você, como analista de dados júnior, também pode ajudar a Bellabeat a alcançá-los.
 
 **Produtos**
@@ -30,7 +40,7 @@ Urška Sršen, co-fundadora e CEO da Bellabeat, reconhece que a análise de dado
 - **Planos da Bellabeat:** A Bellabeat também oferece aos usuários diferentes planos de assinatura. As assinaturas oferecem aos usuários acesso 24 horas por dia, 7 dias por semana, orientação totalmente personalizada sobre nutrição, atividade, sono, saúde e beleza, além de atenção plena com base em seu estilo de vida e objetivos
 
 
-## Tarefa de negócios
+# Tarefa de negócios
 As perguntas que norteiam a análise são:
 1. Quais são algumas das tendências no uso de dispositivos inteligentes?
 
@@ -38,10 +48,10 @@ As perguntas que norteiam a análise são:
 
 3. Como essas tendências podem ajudar a influenciar a estratégia de marketing da Bellabeat?
 
-## Dados
+# Dados
 Os dados são do Rastreador Fitness FitBit fornecidos por Mobius no Kaggle. A licença deste conjunto de dados confirma que ele é de código aberto e que o autor dedicou este conjunto de dados ao domínio público. Este conjunto de dados é gerado por respondentes de uma pesquisa distribuída via Amazon Mechanical Turk entre 03.12.2016 - 05.12.2016. Trinta usuários elegíveis do Fitbit consentiram em enviar dados pessoais de rastreamento, incluindo saídas em nível de minuto para atividade física, frequência cardíaca e monitoramento do sono. Estaremos observando particularmente o período de 04.12.2016 a 05.12.2016. Estão disponíveis 18 documentos .CSV. Em cada documento, os dados estão organizados em formato longo, com as linhas contendo um ponto temporal por sujeito. Portanto, um sujeito pode ter várias linhas de dados, cada uma contendo um ID único para o usuário, juntamente com diferentes dias e horários. Como há apenas 30 usuários elegíveis do Fitbit incluídos nesses conjuntos de dados, o tamanho da amostra é muito pequeno e nenhuma informação adicional é fornecida sobre cada sujeito. Portanto, existem certas variáveis desconhecidas nesta análise, como idade, altura, peso e nível de atividade de cada sujeito.
 
-## Processamento e Exploração
+# Processamento e Exploração
 Para a exploração e análise, utilizou-se a ferramenta Superintendent que nos permite ter uma visualização tabular de dados juntamente com a possibilidade de utilizar SQL para um melhor entendimento dos dados utilizados.
 
 Dentre os 18 apresentados, os datasets que permitiram tirar os melhores insights foram os
@@ -85,7 +95,7 @@ hourlyCalories <- read.csv("hourlyCalories_merged.csv")
 hourlyIntensities <- read.csv("hourlyIntensities_merged.csv")
 ```
 
-## Familiarização com os Datasets
+### Familiarização com os Datasets
 
 ```{r}
 str(dailyActivity)
@@ -95,16 +105,12 @@ str(hourlyIntensities)
 ```
 
 
-Vemos que temos uma inconsitência quanto a data que é apresentada como SleepDay, ActivityDay e ActivityDaty. Além disso, os dados de hora e data estão como CHAR então precisamos padronizá-los para o formato correto.
+Vemos que temos uma inconsitência quanto a data que é apresentada como SleepDay, ActivityDay e ActivityDate. Além disso, os dados de hora e data estão como CHAR então precisamos padronizá-los para o formato correto.
 
 ```{r}
 dailyActivity <- dailyActivity %>%
   rename(ActivityDay = ActivityDate)
-
-head(dailyActivity)
 ```
-
-\
 
 ```{r}
 dailySleep <- dailySleep %>%
@@ -115,12 +121,11 @@ head(dailyActivity)
 
 ### Correção e consistência das colunas de data e hora
 
-### Formatação de Data e Hora:
-
 ```{r}
+#Formatação de Data e Hora:
+
 dailyActivity$ActivityDay <- lubridate::mdy(dailyActivity$ActivityDay)
 dailySleep$ActivityDay <- lubridate::mdy_hms(dailySleep$ActivityDay)
-
 hourlyCalories$ActivityHour <- lubridate::mdy_hms(hourlyCalories$ActivityHour)
 hourlyIntensities$ActivityHour <- lubridate::mdy_hms(hourlyIntensities$ActivityHour)
 
@@ -128,14 +133,13 @@ hourlyIntensities$ActivityHour <- lubridate::mdy_hms(hourlyIntensities$ActivityH
 
 ### Limpeza de Dados
 
-Precisamos verificar se os valores do conjuto de dados está ok, ou seja, verificar se não apresenta valores null ou duplicados.
+Precisamos verificar se os valores do conjuto de dados está ok, ou seja, verificar se não apresenta valores *null* ou duplicados.
 
 ```{r}
 sum(is.na(dailyActivity))
 sum(is.na(dailySleep))
 sum(is.na(hourlyCalories))
 sum(is.na(hourlyIntensities))
-
 ```
 
 ```{r}
@@ -151,11 +155,9 @@ Vemos que somente o dailySleep apresenta duplicatas, então faremos a limpeza.
 dailySleep <- dailySleep %>%
   distinct() %>%
   drop_na()
-
-sum(duplicated(dailySleep))
 ```
 
-Padronizar a todas as colunas como snake_case
+Também devemos padronizar o nome de todase as colunas, para isso colocaremos todas em snake_case
 
 ```{r}
 dailyActivity <- dailyActivity %>%
@@ -172,7 +174,7 @@ hourlyIntensities <- hourlyIntensities %>%
 # Análise
 
 ```{r}
-#explorando a quantidade de passos dadas por dia, quantidade de tempo de sendentarismo e a caloria gasta diariamente
+#Explorando a quantidade de passos dadas por dia, quantidade de tempo de sendentarismo e a caloria gasta diariamente
 s_dailyActivity <- dailyActivity %>%
   select(
     total_steps,
@@ -180,14 +182,12 @@ s_dailyActivity <- dailyActivity %>%
     calories,
   )
 
-
 s_activity_category <- dailyActivity %>%
   select(
     very_active_minutes,
     fairly_active_minutes,
     lightly_active_minutes
     )
-
 
 s_sleeping <-  dailySleep %>%
   select(
@@ -205,44 +205,36 @@ summary(s_dailyActivity)
 summary(s_activity_category)
 summary(s_sleeping)
 summary(s_intensity_hour)
-
 ```
 
 ### Percepções
 
-A media de passos por dia é de 7406 passos sendo que metade desses registro estão entre 0 e 7600 passos e apenas 25% acima de 10000 passos.
+- A média de passos por dia é de 7.406, com metade desses registros variando entre 0 e 7.600 passos, e apenas 25% dos registros ultrapassando 10.000 passos.
 
-O tempo medio em atividade gira em torno de 209 minutos ou 3,5 hora (isso somando as médias entre muito, médio e pouco ativo) enquanto o de sedentarismo gira em torno de 1057 min ou 17 horas.
+- O tempo médio em atividade é de cerca de 209 minutos, ou 3,5 horas (somando as médias entre muito, médio e pouco ativo), enquanto o tempo médio de sedentarismo é de aproximadamente 1.057 minutos, ou 17 horas.
 
-75% dos usuários queimam menos do que 2700 calorias por dia.
+- 75% dos usuários queimam menos de 2.700 calorias por dia.
 
-A média de tempo dormindo por dia é de cerca de 430 minutos, ou 7 horas.
+- A média de tempo dormindo por dia é de cerca de 430 minutos, ou 7 horas.
 
-## O que se pode busca
+### Possibilidades
 
-Visto essas informações, podemos buscar a visualização de algumas informações como:
+Com base nessas informações, podemos tentar uma visualização de:
 
-Quantidade de passos por dia
+- Quantidade de passos por dia
+- Calorias gastas por hora
+- Horas dormidas por dia
+- Pessoas que dormem 8 ou mais horas por noite
+- Total de passos por caloria
+- Horas dormidas por dia da semana
+- Quantidade de passos por dia da semana
+- Intensidade vsm consumo de calorias
+- Passos diários vs. gasto de calorias diário
 
-Caloria gastas hora
 
-Horas dormidas por dia
+### Mesclagem de tabelas.
 
-Pessoas que estão dormindo 8 ou mais horas de sono
-
-Total de passos por Caloria
-
-Intensidade por dia
-
-Horas Dormidas por dia da semana
-
-Quantidade de passos por dia da semana
-
-Intensidade vs consumo de caloria
-
-Passos diários vs gasto de caloria diário
-
-# Mesclagem de tabelas.
+Tendo em mente o que queremos, surge a necessidade de mesclar os conjuntos de dados a fim de  integrar os dados complementares, facilitando a análise de relacionamentos entre diferentes variáveis, proporcionando uma compreensão mais profunda dos padrões e tendências. Trabalhar com um dataset unificado torna o processo analítico mais eficiente, eliminando a necessidade de alternar entre múltiplas fontes
 
 ```{r}
 activity_workout <- merge(hourlyCalories, hourlyIntensities, by=c('id', 'activity_hour'))
@@ -250,23 +242,17 @@ activity_workout <- merge(hourlyCalories, hourlyIntensities, by=c('id', 'activit
 daily_data <- merge(dailySleep, dailyActivity, by=c('id', 'activity_day'))
 ```
 
-```{r}
-head(daily_data)
-```
 
-## Conversões
+### Conversões
 ```{r}
+#Adicionando uma nova tabela que pega os valores em minutos e converte em horas.
 daily_data$total_hours_asleep <- daily_data$total_minutes_asleep / 60
 daily_data$sedentary_hours <- daily_data$sedentary_minutes / 60
-
 
 daily_data$total_hours_asleep <- as.integer(daily_data$total_hours_asleep)
 daily_data$sedentary_hours <- as.integer(daily_data$sedentary_hours)
 ```
 
-```{r}
-head(daily_data)
-```
 
 
 ### Adicionar dia da semana na tabela.
@@ -280,14 +266,13 @@ daily_data <- daily_data %>%
 
 #Separate date and time into their own columns for dailySleep
 activity_workout <- separate(activity_workout, activity_hour, into=c('activity_day', 'hour'), sep=' ')
-
-
-head(daily_data)
-head(activity_workout)
 ```
 
-## Compartilhar e Conclusões 
+# Compartilhamento e percepções
+
 ### Agrupamento de dados
+
+Também fazer um agrupamento diário dos dados dos usuários, assim sendo possível encontrar uma média diária das atividades em destaque, permitindo assim encontrar tendências para a nossa análise.
 
 
 ```{r}
@@ -346,6 +331,10 @@ avg_steps_cal <- daily_data %>%
 
 
 
+### Pessoas que dormem mais que 8 horas diárias
+
+![Pessoas que dormem mais que 8 horas diárias](./Gráficos/sleep1.png)
+
 ```{r}
 
 ggplot(data = avg_sleep_category, aes(x="", y=quality, fill=quality)) +
@@ -357,8 +346,12 @@ ggplot(data = avg_sleep_category, aes(x="", y=quality, fill=quality)) +
   labs(title = "Dormem mais que 8 horas por dia")
 
 ```
+
 Como mostra o gráfico, menos da metade dos usuário dorme 8 ou mais horas por dias, ou seja, não dorme o recomendado e por isso podem apresentar alguns sintomas referentes as isso como:Dificuldade para manter o foco; Queda do desempenho no trabalho ou nos estudos; Esquecimentos frequentes; Sonolência diurna excessiva; entre outrs.
 
+### Horas de sono por dia da semana
+
+![Horas de sono por dia da semana](./Gráficos/sleep2.png)
 
 ```{r}
   ggplot(data = avg_weekday_sleep, aes(x=day_of_week, y= avg_total, fill= day_of_week))+
@@ -367,7 +360,9 @@ Como mostra o gráfico, menos da metade dos usuário dorme 8 ou mais horas por d
 ```
 O gráfico nos mostra que apesar de não estarem dormindo as 8 horas recomendadas os usuário estão mantendo uma média frequente durando os dias da semana.
 
+### Média de horas de sono por dia
 
+![Horas de sono por dia da semana](./Gráficos/sleep3.png)
 
 ```{r}
 ggplot(data=avg_sleep_day, aes(x=activity_day, y=avg_total))+geom_histogram(stat="identity", fill="darkgreen")+
@@ -377,9 +372,11 @@ ggplot(data=avg_sleep_day, aes(x=activity_day, y=avg_total))+geom_histogram(stat
 A média de horas que os usuário dormem está acima de 5h por dia.
 Vemos que, apesar de alguns picos, em nenhum momento a média atingiu 8 horas diárias de sono que é o recomendado por especialista.
 
-Recomendação: O aplicativo pode fornecer recomendações personalizadas para melhorar a qualidade do sono dos usuários que dormem menos de 8 horas. Isso pode incluir dicas de higiene do sono, lembretes para dormir mais cedo e sugestões de relaxamento antes de dormir. Além disso, o Bellabeat pode incentivar os usuários a manter um diário de sono para identificar padrões e fatores que afetam a qualidade do sono.
+**Recomendação:** O aplicativo pode fornecer recomendações personalizadas para melhorar a qualidade do sono dos usuários que dormem menos de 8 horas. Isso pode incluir dicas de higiene do sono, lembretes para dormir mais cedo e sugestões de relaxamento antes de dormir. Além disso, o Bellabeat pode incentivar os usuários a manter um diário de sono para identificar padrões e fatores que afetam a qualidade do sono.
 
 
+### Total de Passos por dia
+![Total de passos por dia](./Gráficos/steps1.png)
 
 ```{r}
 
@@ -389,11 +386,14 @@ ggplot(data=avg_steps_day, aes(x=activity_day, y=avg_total))+geom_histogram(stat
 ```
 A quantidade de passos varia significativamente de um dia para o outro, indicando variações na atividade diária.
 
-Percebe-se que a média de passos diária está acima de 3000 passos.
+Percebe-se que a média de passos diária está acima de 6000 passos.
 
 Alguns dias apresentam picos de atividade, enquanto outros mostram uma redução significativa nos passos.
 
-Recomendação: O aplicativo da Bellabeat pode apresentar a meta de passos em 3000 e parabenizá-los quando atingirem picos altos de atividade.
+**Recomendação:** O aplicativo da Bellabeat pode apresentar a meta de passos em 6000 e parabenizá-los quando atingirem picos altos de atividade.
+
+### Total de Passos por dia da semana
+![Total de passos por dia da semana](./Gráficos/steps.png)
 
 ```{r}
   ggplot(data = avg_weekday_step, aes(x=day_of_week, y= avg_total, fill= day_of_week))+
@@ -405,7 +405,10 @@ Domingo apresenta o menos número de passos, possivelmente pela folga do trabalh
 Sábado foi o dia com a maior quantidade de passos seguido da segunda-feira. 
 A quatidade de passos vai decrescendo a partir da segunda com um alto crescimento no sábado.
 
-Recomendação: O aplicativo pode fornecer lembretes e desafios personalizados para aumentar a atividade física nos dias de menor atividade.
+**Recomendação:** O aplicativo pode fornecer lembretes e desafios personalizados para aumentar a atividade física nos dias de menor atividade.
+
+### Gasto de Caloria pela quantidade de passos
+![Gasto de Caloria por quantidade de passos](./Gráficos/calories.png)
 
 ```{r}
 ggplot(data=avg_steps_cal, aes(x=avg_steps, y=avg_cal))+
@@ -415,12 +418,12 @@ ggplot(data=avg_steps_cal, aes(x=avg_steps, y=avg_cal))+
 ```
 O gráfico nos mostra um gasto exponencial de caloria até os 7000 passos porém, a partir dai, o gasto calórico vem com um crescimento mais lento.
 
-Recomendação o aplicativo pode incluir uma funcionalidade que rastreia a contagem de passos dos usuários e fornece feedback visual sobre o gasto calórico estimado.
+**Recomendação:** o aplicativo pode incluir uma funcionalidade que rastreia a contagem de passos dos usuários e fornece feedback visual sobre o gasto calórico estimado.
 
+### Calorias gastas por hora
+![Total de passos por hora](./Gráficos/calories2.png)
 
 ```{r}
-#Visualização
-
 ggplot(data=avg_calories, aes(x=hour, y=avg_total_calories))+
   geom_histogram(stat="identity", fill="darkgreen")+
   theme(axis.text.x = element_text(angle=90))+
@@ -430,7 +433,12 @@ Vemos por meio do gráfico que os maiores gastos de caloria estão concentrados 
 
 A partir desse horário vemos um decrescimo do gasto de calórias, podendo ser justificado pelos horários que os usuários estariam indo dormir.
 
-Recomendação: O aplicativo da Bellabeat pode apresentar o gasto calorico do indivíduos em alguns horários específicos entre as 12 e as 19. Como também um lembrete, antes desse horário, para as suas atividades de intensidade. 
+**Recomendação:** O aplicativo da Bellabeat pode apresentar o gasto calorico do indivíduos em alguns horários específicos entre as 12 e as 19. Como também um lembrete, antes desse horário, para as suas atividades de intensidade. 
+
+
+### Intensidade por hora
+
+![Intensidade por hora](./Gráficos/intensity.png)
 
 ```{r}
 ggplot(data=avg_intensity, aes(x=hour, y=avg_total, fill=avg_total))+
@@ -440,7 +448,10 @@ ggplot(data=avg_intensity, aes(x=hour, y=avg_total, fill=avg_total))+
 ```
 O gráfico de intensidade reforça o que já foi apresentado pelo gráfico de gastos de caloria visto que, como apresentaremos mais a frente, a intensidade está relacionada com o gasto de caloria. Portanto os horários são bem semelhantes. Com aumentos entre 12 horas e 19 horas onde, a partir daí, começa a decrescer.
 
-Recomendação: O aplicativo pode fornecer sugestões de atividades ou lembretes personalizados durante os períodos de menor atividade para ajudar os usuários a manterem seus objetivos diários de atividade física.
+**Recomendação:** O aplicativo pode fornecer sugestões de atividades ou lembretes personalizados durante os períodos de menor atividade para ajudar os usuários a manterem seus objetivos diários de atividade física.
+
+### Gastos de caloria pela intensidade
+![Gastos de caloria pela intensidade](./Gráficos/calories3.png)
 
 ```{r}
 ggplot(data=avg_intensity_cal, aes(x=avg_intensity, y=avg_cal))+
@@ -449,6 +460,53 @@ ggplot(data=avg_intensity_cal, aes(x=avg_intensity, y=avg_cal))+
   theme(axis.text.x = element_text(angle=90))+
   labs(title = "Gastos de Caloria pela Intensidade", y="Calorias", x="Intensidade")
 ```
-O gráfico veio para evidênciar o que foi falado anteriormente. O gasto de caloria apresenta uma relação positiva com a intensidade, ou seja, quanto mais intensidade maior será o gasto calórico.
+O gráfico veio para evidênciar o que foi falado anteriormente. O gasto de caloria apresenta uma correlação positiva com a intensidade, ou seja, quanto maior a intensidade maior será o gasto calórico.
 
+<<<<<<< HEAD
+# Conclusões
+
+### Resultados
+
+- A média de passos diários dos usuários esta por volta de 3000 passos. Então trabalhar com valor para meta diária de passos - pode ser uma boa opção.
+ 
+- Em média, os usuários não tem uma boa qualidade de sono visto que domem menos que 8 horas diárias.
+ 
+- Há picos de intensidade entre os horários de 12 às 19 hora, - indicando períodos de maior atividade.
+ 
+- Levando os gráficos em consideração, o dia da semana com maior intensidade/atividade seria o sábado entre as 12h e as 19h.
+ 
+- Foi identificada uma correlação positiva entre a quantidade de passos e o gasto de caloria.
+
+### Recomendações para os aplicativos da Bellabeat
+Forncer sugestões de atividades e lembretes personalizados durante os períodos de menor atividade para ajudar os usuários a manterem seus objetivos diários de atividade.
+
+Fornecer recomendações personalizadas para melhorar a qualidade do sono dos usuários que dormem menos de 8 horas. Isso pode incluir dicas de higiene do sono, lembretes para dormir mais cedo e sugestões de relaxamento antes de dormir.
+
+Estabelecer metas semanais baseadas nos dias da semana para incentivar os usuários a manterem uma consistência nas suas atividades.
+
+Oferecer mensagens motivacionais ou recompensas após alcançar certos marcos durante os dias menos ativos (domingo a terça-feira) para aumentar os níveis de atividade ao longo da semana.
+
+Incluir uma funcionalidade que rastreia a contagem de passos dos usuários juntamente com o gasto calório estimado pela quantidade de passos.
+
+Implementar recursos de definição de metas onde os usuários podem definir alvos diários de passos e receber notificações ou recompensas ao alcançá-los.
+
+
+### Estratégias de marketing
+Incentivar os usuário a fornecerem seus dados a Bellabeat a fim de obter mais variáveis e uma amostra de dados maior para uma análises mais precisa;
+
+Criar campanhas educativas para os usuários sobre a importância da atividade física regular e de um sono de qualidade. Podendo utilizar dados e insights dos gráficos para mostrar como o Bellabeat pode ajudar a monitorar e melhorar esses aspectos.
+
+Compartilhar histórias de sucesso de usuários que alcançaram suas metas de saúde e bem-estar usando o Bellabeat.
+
+Gamificar os desafios semanais, organizando desafios semanais com metas específicas onde usuários podem competir para ganhar pontos. Além disso, nutrir a comunidade de usuário promovendo atividade em grupo, assim, fortalecendo o laço da marca com a comunidade de usuários.
+
+Estabelecer parcerias com academias, estúdios de ioga e outras empresas de bem-estar para oferecer pacotes combinados ou descontos para os usuários do Bellabeat.
+
+Coletar feedback dos usuários sobre suas experiências com o Bellabeat e usar essas informações para melhorar continuamente o aplicativo. Implementar novas funcionalidades com base nas necessidades e preferências dos usuários.
+
+Oferecer um excelente suporte ao cliente para ajudar os usuários a resolverem quaisquer problemas que possam encontrar e garantir uma experiência positiva com o aplicativo.
+
+Ao implementar essas estratégias de marketing, o Bellabeat pode aumentar a conscientização sobre a importância da atividade física e do sono, engajar os usuários de maneira mais eficaz e promover um estilo de vida saudável e equilibrado. Essas estratégias também ajudarão a fortalecer a marca Bellabeat e a fidelizar os usuários existentes, ao mesmo tempo em que atraem novos usuários para a plataforma.
+=======
 ## Considerações
+>>>>>>> 231607c6648b93262eeb3d0397f168c16f532f88
