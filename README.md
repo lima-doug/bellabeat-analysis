@@ -25,10 +25,6 @@ Urška Sršen, co-fundadora e CEO da Bellabeat, reconhece que a análise de dado
 
 - **Urška Sršen:** Cofundadora e CEO da Bellabeat
 - **Sando Mur:** Matemático e cofundador da Bellabeat; membro-chave da equipe executiva da Bellabeat
-<<<<<<< HEAD
-=======
-
->>>>>>> 231607c6648b93262eeb3d0397f168c16f532f88
 - **Equipe de análise de marketing da Bellabeat:** Uma equipe de analistas de dados responsável por coletar, analisar e relatar dados que ajudam a orientar a estratégia de marketing da Bellabeat. Você se juntou a esta equipe há seis meses e tem estado ocupado aprendendo sobre a missão e os objetivos de negócios da Bellabeat – e como você, como analista de dados júnior, também pode ajudar a Bellabeat a alcançá-los.
 
 **Produtos**
@@ -462,7 +458,7 @@ ggplot(data=avg_intensity_cal, aes(x=avg_intensity, y=avg_cal))+
 ```
 O gráfico veio para evidênciar o que foi falado anteriormente. O gasto de caloria apresenta uma correlação positiva com a intensidade, ou seja, quanto maior a intensidade maior será o gasto calórico.
 
-<<<<<<< HEAD
+
 # Conclusões
 
 ### Resultados
@@ -507,6 +503,4 @@ Coletar feedback dos usuários sobre suas experiências com o Bellabeat e usar e
 Oferecer um excelente suporte ao cliente para ajudar os usuários a resolverem quaisquer problemas que possam encontrar e garantir uma experiência positiva com o aplicativo.
 
 Ao implementar essas estratégias de marketing, o Bellabeat pode aumentar a conscientização sobre a importância da atividade física e do sono, engajar os usuários de maneira mais eficaz e promover um estilo de vida saudável e equilibrado. Essas estratégias também ajudarão a fortalecer a marca Bellabeat e a fidelizar os usuários existentes, ao mesmo tempo em que atraem novos usuários para a plataforma.
-=======
-## Considerações
->>>>>>> 231607c6648b93262eeb3d0397f168c16f532f88
+
