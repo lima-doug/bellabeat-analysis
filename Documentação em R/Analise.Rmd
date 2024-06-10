@@ -1,72 +1,15 @@
-# ESTUDO DE CASO: Comportamento de uso de dispositivos inteligentes Bellabeat
-Autor: Douglas Lima
+---
+title: "Estudo de caso Bellabeat"
+author: "Douglas Lima"
+date: "`r Sys.Date()`"
+output: html_document
+---
 
-1. [Introdução](#introdução)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-## Introdução
-Este estudo de caso apresenta uma análise detalhada da Bellabeat, uma fabricante de produtos de saúde de alta tecnologia voltados para mulheres. Sob a liderança visionária de Urška Sršen, co-fundadora e CEO, a Bellabeat busca expandir sua presença no mercado global de dispositivos inteligentes. Como parte do curso de Analista de Dados da Google, este estudo se concentra na análise dos dados de condicionamento físico dos dispositivos inteligentes da Bellabeat para identificar padrões de uso e comportamento dos consumidores. As descobertas desta análise fornecerão insights valiosos para orientar as estratégias de marketing da empresa, promovendo seu crescimento e sucesso contínuos no mercado altamente competitivo de tecnologia wearable.
-
-## Cenário
-
-Bellabeat é uma fabricante de produtos de saúde de alta tecnologia voltados para mulheres. Apesar de ser uma empresa pequena, é bem-sucedida e possui potencial para expandir sua participação no mercado global de dispositivos inteligentes.
-
-Urška Sršen, co-fundadora e CEO da Bellabeat, reconhece que a análise de dados de condicionamento físico proveniente de dispositivos inteligentes pode desbloquear novas oportunidades de crescimento para a empresa. Como analista de dados júnior na equipe de marketing, fui encarregado de analisar os dados desses dispositivos para entender melhor como os consumidores os utilizam. Os insights obtidos orientarão a estratégia de marketing da empresa, que será apresentada à equipe executiva da Bellabeat juntamente com recomendações estratégicas.
-
-## Personagens e Produtos
-
-**Personagens**
-
-- **Urška Sršen:** Cofundadora e CEO da Bellabeat
-<br>
-- **Sando Mur:** Matemático e cofundador da Bellabeat; membro-chave da equipe executiva da Bellabeat
-<br>
-- **Equipe de análise de marketing da Bellabeat:** Uma equipe de analistas de dados responsável por coletar, analisar e relatar dados que ajudam a orientar a estratégia de marketing da Bellabeat. Você se juntou a esta equipe há seis meses e tem estado ocupado aprendendo sobre a missão e os objetivos de negócios da Bellabeat – e como você, como analista de dados júnior, também pode ajudar a Bellabeat a alcançá-los.
-<br>
-
-**Produtos**
-
-- **Aplicativo Bellabeat:** O aplicativo Bellabeat fornece aos usuários dados de saúde relacionados à sua atividade, sono, estresse, ciclo menstrual e hábitos de atenção plena. Esses dados podem ajudar os usuários a entender melhor seus hábitos atuais e tomar decisões saudáveis. O aplicativo Bellabeat se conecta à sua linha de produtos inteligentes de bem-estar.
-<br>
-- **Leaf:** O rastreador de bem-estar clássico da Bellabeat pode ser usado como pulseira, colar ou clipe. O rastreador Leaf se conecta ao aplicativo Bellabeat para rastrear a atividade, o sono e o estresse.
-<br>
-- **Time:** Este relógio de bem-estar combina a aparência atemporal de um relógio clássico com tecnologia inteligente para rastrear a atividade, o sono e o estresse do usuário. O relógio Time se conecta ao aplicativo Bellabeat para fornecer informações sobre seu bem-estar diário.
-<br>
-- **Spring:** Esta é uma garrafa de água que rastreia a ingestão diária de água por meio de tecnologia inteligente para garantir que você esteja adequadamente hidratado ao longo do dia. A garrafa Spring se conecta ao aplicativo Bellabeat para rastrear seus níveis de hidratação.
-<br>
-- **Planos da Bellabeat:** A Bellabeat também oferece aos usuários diferentes planos de assinatura. As assinaturas oferecem aos usuários acesso 24 horas por dia, 7 dias por semana, orientação totalmente personalizada sobre nutrição, atividade, sono, saúde e beleza, além de atenção plena com base em seu estilo de vida e objetivos
-
-
-## Tarefa de negócios
-As perguntas que norteiam a análise são:
-1. Quais são algumas das tendências no uso de dispositivos inteligentes?
-
-2. Como essas tendências podem se aplicar aos clientes da Bellabeat?
-
-3. Como essas tendências podem ajudar a influenciar a estratégia de marketing da Bellabeat?
-
-## Dados
-Os dados são do Rastreador Fitness FitBit fornecidos por Mobius no Kaggle. A licença deste conjunto de dados confirma que ele é de código aberto e que o autor dedicou este conjunto de dados ao domínio público. Este conjunto de dados é gerado por respondentes de uma pesquisa distribuída via Amazon Mechanical Turk entre 03.12.2016 - 05.12.2016. Trinta usuários elegíveis do Fitbit consentiram em enviar dados pessoais de rastreamento, incluindo saídas em nível de minuto para atividade física, frequência cardíaca e monitoramento do sono. Estaremos observando particularmente o período de 04.12.2016 a 05.12.2016. Estão disponíveis 18 documentos .CSV. Em cada documento, os dados estão organizados em formato longo, com as linhas contendo um ponto temporal por sujeito. Portanto, um sujeito pode ter várias linhas de dados, cada uma contendo um ID único para o usuário, juntamente com diferentes dias e horários. Como há apenas 30 usuários elegíveis do Fitbit incluídos nesses conjuntos de dados, o tamanho da amostra é muito pequeno e nenhuma informação adicional é fornecida sobre cada sujeito. Portanto, existem certas variáveis desconhecidas nesta análise, como idade, altura, peso e nível de atividade de cada sujeito.
-
-## Processamento e Exploração
-Para a exploração e análise, utilizou-se a ferramenta Superintendent que nos permite ter uma visualização tabular de dados juntamente com a possibilidade de utilizar SQL para um melhor entendimento dos dados utilizados.
-
-Dentre os 18 apresentados, os datasets que permitiram tirar os melhores insights foram os
-
-    dailyActivity_merged.csv
-    sleepDay_merged.csv
-    hourlyCalouries_merged.csv
-    hourlyIntensities_merged.csv
-
-O arquivo dailyActivity aborda outras bases como:
-
-    dailySteps_merged.csv
-    dailyCalouries_merged.csv
-    dailyIntensities_merged.csv
-
-
-Alguns dados não atendiam aos requisitos necessários para se fazer uma boa análise por se tratar de uma amostra muito pequena. Outros, atenderam se quisessem saber mais sobre a rotina dos indivíduos ao longo do dia. Para tanto, os dados escolhidos abordam bem a vida dos indivíduos ao longo do mês permitindo assim tirar conclusões mais assertivas acerca do que foi solicitado para a análise.
-
-### Bibliotecas Utilizadas
+## Bibliotecas Utilizadas
 
 ```{r}
 library(tidyverse)
@@ -77,11 +20,11 @@ library(lubridate)
 library(janitor)
 ```
 
-### Importando Dataset
+## Importando Dataset
 
 ```{r}
 #Mudar projeto para página dos arquivos
-setwd("C:\\Users\\user\\OneDrive\\Área de Trabalho\\Estudo de Caso Google\\Fitabase Data 4.12.16-5.12.16")
+setwd("C:\\Users\\mdlim\\OneDrive\\Área de Trabalho\\Estudo de Caso Google\\Fitabase Data 4.12.16-5.12.16")
 
 #Importar datasets
 dailyActivity <- read.csv("dailyActivity_merged.csv")
@@ -95,10 +38,21 @@ hourlyIntensities <- read.csv("hourlyIntensities_merged.csv")
 
 ```{r}
 str(dailyActivity)
-str(dailySleep)
+```
+
+```{r}
 str(hourlyCalories)
+```
+
+```{r}
 str(hourlyIntensities)
 ```
+
+```{r}
+str(dailySleep)
+
+```
+
 
 
 Vemos que temos uma inconsitência quanto a data que é apresentada como SleepDay, ActivityDay e ActivityDaty. Além disso, os dados de hora e data estão como CHAR então precisamos padronizá-los para o formato correto.
@@ -456,5 +410,3 @@ ggplot(data=avg_intensity_cal, aes(x=avg_intensity, y=avg_cal))+
   labs(title = "Gastos de Caloria pela Intensidade", y="Calorias", x="Intensidade")
 ```
 O gráfico veio para evidênciar o que foi falado anteriormente. O gasto de caloria apresenta uma relação positiva com a intensidade, ou seja, quanto mais intensidade maior será o gasto calórico.
-
-## Considerações
